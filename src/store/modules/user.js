@@ -1,4 +1,4 @@
-import { login, logout, getInfo, getInfo2 } from '@/api/user'
+import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -6,7 +6,7 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
   }
 }
 
@@ -24,7 +24,7 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
-  }
+  },
 }
 
 const actions = {
@@ -49,8 +49,7 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       // getInfo({ token: state.token })
-      getInfo2({ token: state.token })
-        // getInfo(state.token)
+      getInfo(state.token)
         .then((response) => {
           const { data } = response
 
@@ -93,12 +92,12 @@ const actions = {
       commit('RESET_STATE')
       resolve()
     })
-  }
+  },
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 }
