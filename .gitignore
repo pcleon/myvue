@@ -16,3 +16,4 @@ tests/**/coverage/
 *.sln
 node_modules/
 .idea/
+node_modules
