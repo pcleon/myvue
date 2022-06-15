@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'vue-dba-token'
+const TokenKey = 'pcleon-token'
 
 export function getToken() {
   return Cookies.get(TokenKey)
