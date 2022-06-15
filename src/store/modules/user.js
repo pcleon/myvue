@@ -5,7 +5,10 @@ import { resetRouter } from '@/router'
 const getDefaultState = () => {
   return {
     token: getToken(),
+    uid: '',
     name: '',
+    email: '',
+    team: '',
     avatar: '',
     roles: [],
   }
@@ -20,8 +23,17 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
   },
+  SET_UID: (state, uid) => {
+    state.uid = uid
+  },
   SET_NAME: (state, name) => {
     state.name = name
+  },
+  SET_EMAIL: (state, email) => {
+    state.email = email
+  },
+  SET_TEAM: (state, team) => {
+    state.team = team
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
@@ -60,7 +72,7 @@ const actions = {
             reject('Verification failed, please Login again.')
           }
 
-          const { roles, name, avatar } = data
+          const { roles, uid, name, team, avatar, email } = data
 
           // roles must be a non-empty array
           if (!roles || roles.length <= 0) {
@@ -68,7 +80,10 @@ const actions = {
           }
 
           commit('SET_ROLES', roles)
+          commit('SET_UID', uid)
           commit('SET_NAME', name)
+          commit('SET_TEAM', team)
+          commit('SET_EMAIL', email)
           commit('SET_AVATAR', avatar)
           resolve(data)
         })
