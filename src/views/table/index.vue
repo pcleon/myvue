@@ -50,7 +50,7 @@
       </el-table-column>
       <el-table-column align="center" label="角色" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.roles }}</span>
+          <span>{{ scope.row.roles_name }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -84,8 +84,8 @@ export default {
     fetchData() {
       this.listLoading = true
       getUserList().then(response => {
-        // this.list = response.data.items
-        this.list = response.data
+        this.list = response.data.items
+        // this.list = response.data
         console.log(this.list)
         this.listLoading = false
       })
