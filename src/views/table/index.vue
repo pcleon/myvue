@@ -31,15 +31,15 @@
           <span>{{ scope.row.date_join }}</span>
         </template>
       </el-table-column> -->
-      <el-table-column align="center" prop="created_at" label="创建时间" width="200">
+      <el-table-column align="center" prop="created_at" label="创建时间" >
         <template slot-scope="scope">
-          <i class="el-icon-time" />
+          <i class="el-icon-time"/>
           <span>{{ scope.row.date_joined }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="上次登录" width="200">
+      <el-table-column align="center" prop="created_at" label="上次登录" >
         <template slot-scope="scope">
-          <i class="el-icon-time" />
+          <i class="el-icon-time"/>
           {{ scope.row.last_login }}
         </template>
       </el-table-column>
@@ -48,17 +48,26 @@
           <el-tag :type="scope.row.is_active | statusFilter">{{ scope.row.is_active }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column align="center" label="角色" width="200">
+      <el-table-column align="center" label="角色">
         <template slot-scope="scope">
           <span>{{ scope.row.roles_name }}</span>
         </template>
       </el-table-column>
     </el-table>
+
+    <pagination
+      v-show="total>0"
+      :total="total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="fetchData"
+    />
   </div>
 </template>
 
 <script>
 import { getUserList } from '@/api/table'
+import Pagination from '@/components/Pagination'
 
 export default {
   filters: {
@@ -71,10 +80,20 @@ export default {
       return statusMap[status]
     }
   },
+  components: { Pagination },
   data() {
     return {
       list: null,
-      listLoading: true
+      listLoading: true,
+      total: 0,
+      listQuery: {
+        page: 1,
+        limit: 2,
+        importance: undefined,
+        title: undefined,
+        type: undefined,
+        sort: '+id'
+      }
     }
   },
   created() {
@@ -83,10 +102,10 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getUserList().then(response => {
-        this.list = response.data.items
+      getUserList(this.listQuery).then(response => {
+        this.list = response.data.results
+        this.total = response.data.total
         // this.list = response.data
-        console.log(this.list)
         this.listLoading = false
       })
     }
