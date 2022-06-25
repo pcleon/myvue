@@ -90,7 +90,7 @@ export default {
           { required: true, trigger: 'blur', validator: validateUsername },
         ],
         password: [
-          { required: true, trigger: 'blur', validator: validatePassword },
+          // { required: true, trigger: 'blur', validator: validatePassword },
         ],
       },
       loading: false,
