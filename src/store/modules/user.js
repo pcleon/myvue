@@ -10,7 +10,7 @@ const getDefaultState = () => {
     email: '',
     team: '',
     avatar: '',
-    roles: [],
+    roles: []
   }
 }
 
@@ -40,7 +40,7 @@ const mutations = {
   },
   SET_ROLES: (state, roles) => {
     state.roles = roles
-  },
+  }
 }
 
 const actions = {
@@ -64,7 +64,7 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token)
+      getInfo()
         .then((response) => {
           const { data } = response
 
@@ -110,12 +110,12 @@ const actions = {
       commit('RESET_STATE')
       resolve()
     })
-  },
+  }
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions,
+  actions
 }

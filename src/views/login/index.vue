@@ -54,8 +54,7 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click.native.prevent="handleLogin"
-        >登录</el-button
-      >
+      >登录</el-button>
     </el-form>
   </div>
 </template>
@@ -83,28 +82,28 @@ export default {
     return {
       loginForm: {
         username: 'leon',
-        password: 'leon',
+        password: 'leon'
       },
       loginRules: {
         username: [
-          { required: true, trigger: 'blur', validator: validateUsername },
+          { required: true, trigger: 'blur', validator: validateUsername }
         ],
         password: [
           // { required: true, trigger: 'blur', validator: validatePassword },
-        ],
+        ]
       },
       loading: false,
       passwordType: 'password',
-      redirect: undefined,
+      redirect: undefined
     }
   },
   watch: {
     $route: {
-      handler: function (route) {
+      handler: function(route) {
         this.redirect = route.query && route.query.redirect
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   methods: {
     showPwd() {
@@ -135,8 +134,8 @@ export default {
           return false
         }
       })
-    },
-  },
+    }
+  }
 }
 </script>
 
