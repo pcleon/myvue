@@ -31,15 +31,15 @@
           <span>{{ scope.row.date_join }}</span>
         </template>
       </el-table-column> -->
-      <el-table-column align="center" prop="created_at" label="创建时间" >
+      <el-table-column align="center" prop="created_at" label="创建时间">
         <template slot-scope="scope">
-          <i class="el-icon-time"/>
+          <i class="el-icon-time" />
           <span>{{ scope.row.date_joined }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="上次登录" >
+      <el-table-column align="center" prop="created_at" label="上次登录">
         <template slot-scope="scope">
-          <i class="el-icon-time"/>
+          <i class="el-icon-time" />
           {{ scope.row.last_login }}
         </template>
       </el-table-column>
@@ -50,7 +50,7 @@
       </el-table-column>
       <el-table-column align="center" label="角色">
         <template slot-scope="scope">
-          <span>{{ scope.row.roles_name }}</span>
+          <span>{{ scope.row.roles }}</span>
         </template>
       </el-table-column>
     </el-table>

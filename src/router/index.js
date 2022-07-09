@@ -112,7 +112,7 @@ export const asyncRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: 'Menu1-DBA', roles: ['DBA'] },
+        meta: { title: 'Menu1-dba', roles: ['dba'] },
         children: [
           {
             path: 'menu1-1',
@@ -158,20 +158,27 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/dbops',
+    path: '/dbopr',
     component: Layout,
-    redirect: '/dbops/',
-    name: 'Dbops',
+    redirect: '/dbopr/',
+    name: 'Dbopr',
     meta: {
       title: '数据库管理',
-      icon: 'el-icon-setting'
+      icon: 'el-icon-setting',
+      roles: ['dba']
     },
     children: [
       {
         path: 'dbuser',
-        component: () => import('@/views/dbops/user'),
+        component: () => import('@/views/dbopr/user'),
         name: 'dbuser',
-        meta: { title: 'db用户管理', roles: ['DBA'] }
+        meta: { title: 'db用户管理' }
+      },
+      {
+        path: 'ha',
+        component: () => import('@/views/dbopr/ha'),
+        name: 'TabHa',
+        meta: { title: 'ha' }
       }
     ]
   },
