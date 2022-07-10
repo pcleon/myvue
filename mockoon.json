@@ -1,0 +1,301 @@
+{
+    "source": "mockoon:1.17.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "f9fbd54e-16fa-4874-ac31-639ef21cd4a4",
+                "lastMigration": 19,
+                "name": "proxy_vue",
+                "endpointPrefix": "api",
+                "latency": 0,
+                "port": 8000,
+                "hostname": "0.0.0.0",
+                "routes": [
+                    {
+                        "uuid": "1807736a-39db-4967-bf28-11c9dd2f7369",
+                        "documentation": "用户列表",
+                        "method": "get",
+                        "endpoint": "user/",
+                        "responses": [
+                            {
+                                "uuid": "58fe588b-b616-4a1d-adb0-e658bca3d043",
+                                "body": "\n{\n\n    \"code\": 20000,\n    \"msg\": \"成功\",\n    \"data\": {\n        \"total\": 100,\n        \"items\": [\n          {{#repeat 100 comma=true}}\n          {\n            \"id\": {{@index}},\n            \"username\": \"{{lastName}}{{firstName}}\",\n            \"mobile\": \"{{{ faker 'phone.phoneNumber' '1##-###-###'}}}\",\n            \"email\": \"{{email}}\",\n            \"team\": \"{{oneOf (array '系统' '运维' '开发' '测试')}}\",\n            \"date_joined\": \"{{date '2022-03-20' '2022-06-25' \"yyyy-MM-dd'T'HH:mm:ss.SSS'+08:00'\"}}\",\n            \"last_login\": \"{{date '2022-05-20' '2022-06-25' \"yyyy-MM-dd'T'HH:mm:ss.SSS'+08:00'\"}}\",\n            \"is_active\": {{oneOf (array 'true' 'false')}},\n            \"roles\": {{{someOf (array '0' '1' '2' '3' '4') 0 5 true}}},\n            \"roles_name\": {{{someOf (array '管理员' 'dba' 'admin' 'editor' 'developer') 0 5 true}}}\n        }\n        {{/repeat}}\n        ]\n    }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": false,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "9ae1c4f4-17a1-47d0-91bf-712e7dd10eb6",
+                        "documentation": "登录",
+                        "method": "post",
+                        "endpoint": "user/login/",
+                        "responses": [
+                            {
+                                "uuid": "6c4d057c-d979-4ad6-b3ad-b5027ee719c6",
+                                "body": "{\n  \"status\": \"success\",\n  \"code\": 20000,\n  \"data\": {\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRoIjoiYWNjZXNzIiwiZXhwIjoxNjU3NDk2NTMxLCJpYXQiOjE2NTc0MTAxMzEsImp0aSI6IjM0NzJjM2EwMjZiNTQ3YjhiNWU3YTE2ZGU3MmVjNjFlIiwidXNlcl9pZCI6MX0.85W8i4wkDjKLoxMddfY09IP4krKF7NHYrdq3Kbk8pI4\"\n  },\n  \"message\": null\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "2ec8728b-5429-4b78-9127-f6969dc7c0e5",
+                        "documentation": "用户信息",
+                        "method": "post",
+                        "endpoint": "user/info/",
+                        "responses": [
+                            {
+                                "uuid": "52206aa4-c3bd-4e86-8715-037e00133131",
+                                "body": "{\n  \"status\": \"success\",\n  \"code\": 20000,\n  \"data\": {\n    \"uid\": 1,\n    \"name\": \"leon\",\n    \"team\": \"小组1\",\n    \"roles\": [\n      \"dba\",\n      \"sa\",\n      \"qa\"\n    ],\n    \"email\": \"wpctszz@qq.com\",\n    \"avatar\": \"https://avatars.githubusercontent.com/u/2787937?s=100\",\n    \"introduction\": \"我是leon, 哈哈哈哈!!\"\n  },\n  \"message\": null\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "X-Token",
+                                        "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6Imxlb24iLCJleHAiOjE2NTQzMjQ5ODYsImVtYWlsIjoibGVvbkB4eC54eCJ9.HrwDvA6pE75_IOcCLjuGtFi-m2EqtY8Ea7Cr0dTQBpw"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "cf8ad225-339f-4804-b653-9b5c8d63afa5",
+                                "body": "{ \"code\": 50000,  \n  \"message\":\"fail\",\n  \"data\":{\n  }\n}\n",
+                                "latency": 0,
+                                "statusCode": 401,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "c867f4a6-6d70-47ab-b844-d8e19e620b69",
+                                "body": "{ \"code\": 50000,  \n  \"message\":\"500\",\n  \"data\":{\n  }\n}\n",
+                                "latency": 0,
+                                "statusCode": 500,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "5fab5f54-db52-484f-ab32-c8f8c1a914e3",
+                        "documentation": "多用户信息轮循",
+                        "method": "post",
+                        "endpoint": "user/infox/",
+                        "responses": [
+                            {
+                                "uuid": "fce7ad3e-208e-45d9-80ae-94a9373d5ee5",
+                                "body": "{ \"code\": 50000,  \n  \"message\":\"fail\",\n  \"data\":{\n  }\n}\n",
+                                "latency": 0,
+                                "statusCode": 401,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "d211061b-7886-4363-a98f-e222e942bade",
+                                "body": "{ \"code\": 50000,  \n  \"message\":\"500\",\n  \"data\":{\n  }\n}\n",
+                                "latency": 0,
+                                "statusCode": 500,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": true,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "97d06dd7-088f-4849-bddd-7e8a3325ad4e",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "user/xxx1",
+                        "responses": [
+                            {
+                                "uuid": "2b9d7e86-576f-44b5-a06b-5d2340e4690d",
+                                "body": "[\n  {{#repeat (queryParam 'total' '50')}}\n  {\n    \"id\": {{@index}},\n    \"user\": \"{{faker 'name.firstName'}}\",\n    \"age\": \"{{faker 'datatype.number' min=0 max=60}}\"\n  }  \n  {{/repeat}}\n]\n",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "ea33558b-830f-435e-a04b-1d4fb051b428",
+                        "documentation": "ha信息",
+                        "method": "get",
+                        "endpoint": "dbopr/ha/",
+                        "responses": [
+                            {
+                                "uuid": "f878595c-a063-4e50-8030-ec0b2c03702e",
+                                "body": "{ \"code\": 20000,  \n  \"message\":\"success\",\n  \"data\":[\n    {{#repeat 20}}\n        { \"label\": \"{{faker 'name.firstName'}}\", \"key\": \"{{ipv4}}\" }\n    {{/repeat}}\n      ]\n}\n",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "AND",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "d3cb3610-d589-4a9a-a996-e8e09b154ccc",
+                                "body": "{\n\t\"code\": 20000,\n\t\"message\": \"success\",\n\t\"data\": [\n    {{#repeat 20}}\n\t  {\n\t\t\"slave\": \"{{ipv4}}\",\n\t\t\"vip\": \"{{ipv4}}\",\n\t\t\"db_name\": \"{{faker 'name.firstName'}}\",\n\t\t\"master\": \"{{ipv4}}\",\n\t\t\"arbit\": \"{{queryParam 'arbit' '2.2.2.2'}}\",\n\t\t\"v_tag\": \"{{oneOf (array 'master' 'slave')}}\"\n\t  }\n\t  {{/repeat}}\n\t]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "query",
+                                        "modifier": "arbit",
+                                        "value": "(((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))\\.){3}((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))",
+                                        "operator": "regex"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "480ef689-21ae-4e7e-bff5-0e5f99d67ce2",
+                                "body": "{\n\t\"code\": 20000,\n\t\"message\": \"success\",\n\t\"data\": [\n    {{#repeat 20}}\n\t  {\n\t\t\"slave\": \"{{ipv4}}\",\n\t\t\"vip\": \"{{ipv4}}\",\n\t\t\"db_name\": \"{{faker 'name.firstName'}}\",\n\t\t\"master\": \"{{ipv4}}\",\n\t\t\"arbit\": \"172.16.1.220\",\n\t\t\"v_tag\": \"{{oneOf (array 'master' 'slave')}}\"\n\t  }\n\t  {{/repeat}}\n\t]\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "query",
+                                        "modifier": "arbit",
+                                        "value": "172.16.1.220",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    }
+                ],
+                "proxyMode": true,
+                "proxyHost": "http://127.0.0.1:8001",
+                "proxyRemovePrefix": false,
+                "tlsOptions": {
+                    "enabled": false,
+                    "type": "CERT",
+                    "pfxPath": "",
+                    "certPath": "",
+                    "keyPath": "",
+                    "caPath": "",
+                    "passphrase": ""
+                },
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json, text/plain, */*"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Origin",
+                        "value": "*"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Methods",
+                        "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+                    },
+                    {
+                        "key": "Access-Control-Allow-Headers",
+                        "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}
